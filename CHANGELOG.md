@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project follows the spirit of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses semantic versioning for specification releases.
 
+## [1.0.1] - 2026-06-05
+
+### Changed
+
+- Updated documentation examples to use Wikipedia instead of Outlook.
+
 ## [1.0.0] - 2026-06-04
 
 ### Added
