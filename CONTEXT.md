@@ -95,7 +95,9 @@ _Avoid_: stdout, response payload, buffer mutation
 - Balanced parentheses inside **Footnote text** are allowed.
 - If there are no footnotes, output is unchanged.
 - If there are footnotes, the **Rendered footnote block** is appended after trimming trailing whitespace from the transformed body.
-- Whitespace around a **Footnote marker** is preserved exactly; only the annotation itself is replaced.
+- Horizontal whitespace between preceding body text and a **Footnote marker** is allowed in input and collapsed during rendering, so the **Rendered inline reference** attaches to the preceding body text.
+- This whitespace collapse does not cross line breaks.
+- Other whitespace around a **Footnote marker** is preserved exactly.
 - A **Malformed source footnote** is a strict transformation error.
 - Empty and whitespace-only **Footnote text** are invalid.
 - Valid **Footnote text** is trimmed before being listed in the **Rendered footnote block** and before being inserted by reverse transformation.

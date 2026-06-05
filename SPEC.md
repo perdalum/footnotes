@@ -67,8 +67,11 @@ The render transformation converts source footnote annotations into rendered inl
 
 Each valid source annotation is replaced by an inline reference.
 
-- Replace only the exact annotation from `ƒ(` through its matching `)`.
-- Preserve all surrounding whitespace exactly.
+- Replace the source annotation from `ƒ(` through its matching `)` with the inline reference.
+- Allow horizontal whitespace between the preceding body text and the `ƒ(` marker.
+- Collapse that immediately preceding horizontal whitespace during rendering, so the inline reference attaches to the preceding body text.
+- Do not collapse across line breaks.
+- Preserve other surrounding whitespace exactly.
 - Number footnotes in encounter order, starting at 1.
 - Render inline references using Unicode superscript digits.
 - Multi-digit references are rendered digit by digit.
@@ -91,11 +94,12 @@ Superscript digit mapping:
 Examples:
 
 ```text
-wordƒ(note)  -> word¹
-word ƒ(note) -> word ¹
-wordƒ(note). -> word¹.
-10           -> ¹⁰
-23           -> ²³
+wordƒ(note)   -> word¹
+word ƒ(note)  -> word¹
+word\tƒ(note) -> word¹
+wordƒ(note).  -> word¹.
+10            -> ¹⁰
+23            -> ²³
 ```
 
 ## Rendered footnote block
@@ -275,12 +279,12 @@ Expected render result:
 Plain text without markers.
 ```
 
-### Scenario 2: render one source footnote
+### Scenario 2: render one source footnote with optional marker spacing
 
 Input:
 
 ```text
-Wikipediaƒ(https://wikipedia.org) is mentioned.
+Wikipedia ƒ(https://wikipedia.org) is mentioned.
 ```
 
 Expected render result:
@@ -311,7 +315,7 @@ A¹ B² C³
 3) third
 ```
 
-### Scenario 4: render preserves surrounding whitespace
+### Scenario 4: render collapses whitespace before the marker
 
 Input:
 
@@ -322,7 +326,7 @@ word ƒ(note) end
 Expected render result:
 
 ```text
-word ¹ end
+word¹ end
 
 ---
 1) note

@@ -15,10 +15,10 @@ The project is intentionally not tied to any implementation language, runtime, u
 Authors write footnotes inline with the marker `ƒ(` and a closing `)`:
 
 ```text
-Wikipediaƒ(https://wikipedia.org)
+Wikipedia ƒ(https://wikipedia.org)
 ```
 
-Rendering converts that source annotation into a superscript reference and a collected block:
+Rendering collapses the space before the marker, converts the source annotation into a superscript reference, and adds a collected block:
 
 ```text
 Wikipedia¹
@@ -38,6 +38,7 @@ render(input text) -> transformed text | transformation error
 Render rules include:
 
 - source annotations use `ƒ(<footnote text>)`,
+- horizontal whitespace before the `ƒ(` marker is allowed and collapsed in rendered output,
 - footnote text must be non-empty and single-line,
 - balanced parentheses are allowed inside footnote text,
 - footnotes are numbered in encounter order, starting at `1`,

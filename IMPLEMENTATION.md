@@ -98,6 +98,8 @@ Algorithm:
    - advance one character,
    - update line/column counters if tracked.
 4. If the current position is the exact marker `ƒ(`:
+   - if the marker is preceded on the same line by body text, remove any horizontal whitespace between that body text and the marker from the transformed body buffer,
+   - do not remove line breaks while performing this collapse,
    - record marker line/column/offset if tracked,
    - parse until the matching unmatched `)` on the same line,
    - maintain parenthesis depth, starting at `1` for the marker's opening `(`,
@@ -173,7 +175,9 @@ Suggested algorithm:
 11. If all checks pass, the rendered footnote block is valid.
 12. If a final candidate block is present but fails validation, report a malformed-rendered-block error when reverse or mixed-input rendering requires interpreting it.
 
-## Line break handling
+## Whitespace and line break handling
+
+Horizontal whitespace between preceding body text and a source footnote marker is allowed and collapsed during rendering. For example, `Wikipedia ƒ(note)` renders as `Wikipedia¹`, not `Wikipedia ¹`. The collapse applies only to spaces or similar horizontal spacing before the marker; it must not cross a line break.
 
 A line break inside a source footnote annotation makes the annotation malformed. Implementations should recognise the line break conventions that are natural for their text environment. At minimum, `\n` should be treated as a line break. If the environment can receive `\r\n` or `\r`, handle those consistently as line breaks for validation and diagnostic line/column counting.
 
@@ -238,17 +242,18 @@ An implementation is conformant when it satisfies the scenarios in `SPEC.md`, in
 2. Render with one source footnote creates one superscript reference and one block entry.
 3. Render with multiple source footnotes numbers them in encounter order.
 4. Rendered superscript references above 9 render digit by digit.
-5. Render preserves surrounding whitespace.
-6. Render trims footnote text in the block.
-7. Render supports balanced parentheses inside source footnote text.
-8. Render trims transformed body trailing whitespace before appending the block.
-9. Reverse converts rendered inline references and block entries to source annotations.
-10. Reverse ignores existing source annotations.
-11. Render normalizes mixed input to one coherent block.
-12. Reverse without a rendered footnote block returns the input unchanged.
-13. Malformed source footnotes fail without partial transformed text.
-14. Malformed rendered footnote blocks fail without partial transformed text when interpretation is required.
-15. Errors include useful diagnostics, preferably line and column.
+5. Render collapses horizontal whitespace immediately before a source footnote marker.
+6. Render preserves other surrounding whitespace.
+7. Render trims footnote text in the block.
+8. Render supports balanced parentheses inside source footnote text.
+9. Render trims transformed body trailing whitespace before appending the block.
+10. Reverse converts rendered inline references and block entries to source annotations.
+11. Reverse ignores existing source annotations.
+12. Render normalizes mixed input to one coherent block.
+13. Reverse without a rendered footnote block returns the input unchanged.
+14. Malformed source footnotes fail without partial transformed text.
+15. Malformed rendered footnote blocks fail without partial transformed text when interpretation is required.
+16. Errors include useful diagnostics, preferably line and column.
 
 ## Documentation map
 

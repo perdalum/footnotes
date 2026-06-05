@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 This project follows the spirit of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses semantic versioning for specification releases.
 
+## [2.0.0] - 2026-06-05
+
+### Changed
+
+- Changed render behavior so horizontal whitespace immediately before a source footnote marker is allowed in input and collapsed during rendering.
+
+### Breaking
+
+- Inputs such as `word ƒ(note)` now render as `word¹` instead of `word ¹`.
+
 ## [1.0.2] - 2026-06-05
 
 ### Added

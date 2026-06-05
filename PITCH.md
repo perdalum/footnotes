@@ -5,13 +5,13 @@ Clear-Text Footnotes is a small text transformation for writing simple footnotes
 Write an inline source annotation like this:
 
 ```text
-Wikipediaƒ(https://wikipedia.org)
+Wikipedia ƒ(https://wikipedia.org)
 ```
 
-Render it into this:
+Render it into this, with the space before the marker collapsed:
 
 ```text
-wikipedia¹
+Wikipedia¹
 
 ---
 1) https://wikipedia.org
@@ -116,7 +116,7 @@ reverses as:
 <text>ƒ(<footnote text>)<text>
 ```
 
-Numbers are assigned in encounter order, starting at `1`. Inline numbers use Unicode superscript digits, for example `¹`, `²`, `³`, and `¹⁰`.
+Numbers are assigned in encounter order, starting at `1`. Inline numbers use Unicode superscript digits, for example `¹`, `²`, `³`, and `¹⁰`. Horizontal whitespace before the `ƒ(` marker is allowed in source text and collapsed in rendered output.
 
 ## Design intent
 
