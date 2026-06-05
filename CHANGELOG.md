@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 This project follows the spirit of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and uses semantic versioning for specification releases.
 
+## [1.0.2] - 2026-06-05
+
+### Added
+
+- Added an MIT license file.
+
 ## [1.0.1] - 2026-06-05
 
 ### Changed
