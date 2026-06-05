@@ -15,16 +15,16 @@ The project is intentionally not tied to any implementation language, runtime, u
 Authors write footnotes inline with the marker `ƒ(` and a closing `)`:
 
 ```text
-Outlookƒ(https://outlook.com)
+Wikipediaƒ(https://wikipedia.org)
 ```
 
 Rendering converts that source annotation into a superscript reference and a collected block:
 
 ```text
-Outlook¹
+Wikipedia¹
 
 ---
-1) https://outlook.com
+1) https://wikipedia.org
 ```
 
 ## Render transformation

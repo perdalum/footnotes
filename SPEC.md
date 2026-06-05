@@ -40,7 +40,7 @@ and ends at the next unmatched closing parenthesis on the same line.
 Examples:
 
 ```text
-Outlookƒ(https://outlook.com)
+Wikipediaƒ(https://wikipedia.org)
 ```
 
 ```text
@@ -280,16 +280,16 @@ Plain text without markers.
 Input:
 
 ```text
-Outlookƒ(https://outlook.com) is mentioned.
+Wikipediaƒ(https://wikipedia.org) is mentioned.
 ```
 
 Expected render result:
 
 ```text
-Outlook¹ is mentioned.
+Wikipedia¹ is mentioned.
 
 ---
-1) https://outlook.com
+1) https://wikipedia.org
 ```
 
 ### Scenario 3: render multiple source footnotes in encounter order

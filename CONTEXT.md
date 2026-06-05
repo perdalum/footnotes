@@ -82,7 +82,7 @@ _Avoid_: stdout, response payload, buffer mutation
 
 ## Example dialogue
 
-> **Developer:** "If the input contains `Outlookƒ(https://outlook.com)`, where does the **Footnote text** end?"
+> **Developer:** "If the input contains `Wikipediaƒ(https://wikipedia.org)`, where does the **Footnote text** end?"
 > **Domain expert:** "At the next unmatched closing parenthesis on the same line; balanced parentheses inside the **Footnote text** are allowed."
 
 > **Developer:** "If the input contains rendered footnotes and a new `ƒ(...)` annotation, should rendering append a second block?"

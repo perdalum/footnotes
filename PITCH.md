@@ -5,16 +5,16 @@ Clear-Text Footnotes is a small text transformation for writing simple footnotes
 Write an inline source annotation like this:
 
 ```text
-Outlookƒ(https://outlook.com)
+Wikipediaƒ(https://wikipedia.org)
 ```
 
 Render it into this:
 
 ```text
-Outlook¹
+wikipedia¹
 
 ---
-1) https://outlook.com
+1) https://wikipedia.org
 ```
 
 The same system can also reverse rendered footnotes back to source annotations, and it can normalize mixed text that contains both existing rendered footnotes and newly added source annotations.
